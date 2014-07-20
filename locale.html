@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Localization</title>
+    
+    <style>
+        body {
+            text-transform:uppercase;
+        }
+
+        .main-content {
+            margin:0px auto; /* Right and left margin widths set to "auto" */
+            text-align:center; /* Counteract to IE5/Win Hack */
+            border:0px;
+            background-color: rgb(226, 223, 253);
+        }
+
+        .info {
+            text-align:center;
+            padding:30px;
+            border:#FFFFFF solid 10px;
+            margin-top:10px;
+            font-family:"Trebuchet MS", Arial, Verdana;
+            color:#33cc00;
+            font-size:27px;
+            line-height:40px;
+        }
+
+        .info span{
+            margin-top: 20px;
+            color:#2b8e00;
+            display:block;
+            font-size:55px;
+        }
+
+    </style>
+</head>
+<body ng-controller="MainController">
+    <div class="main-content">
+        <div class="info">
+        Now <span>{{date | date:'medium'}}</span>
+        </div>
+    </div>
+
+    <script src="js/an-1.2.0-rc.2/angular.min.js"></script>
+    <script src="js/an-1.2.0-rc.2/i18n/angular-locale_zh-cn.js"></script>
+    <script type="text/javascript">
+        /*
+        Use the date filter to localize the date string. 
+        Refer: https://docs.angularjs.org/api/ng/filter/date
+
+        */
+        'use strict';    
+        var app = angular.module('myapp',[]);
+
+        // Define controllers
+        app.controller('MainController', [
+            '$scope', '$window', 
+            function($scope, $window, $screen){
+                $scope.date = new Date();
+            }
+        ]);
+    </script>    
+</body>
+</html>
